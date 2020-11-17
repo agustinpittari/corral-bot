@@ -1,3 +1,5 @@
+let Discord = require('discord.js');
+
 module.exports = {
     name: 'sorteo',
     description: 'armado de equipos',
@@ -18,6 +20,14 @@ module.exports = {
           args.splice(random, 1)
           }
         }
-        message.channel.send(`Los equipos son\nEquipo 1: ${equipo1}\nEquipo 2: ${equipo2}`)
+        let embed = new Discord.MessageEmbed()
+            .setColor('#FF3633')
+            .setTitle('🎲Resultado del sorteo🎲')
+            .setDescription('🏅Los equipos son🏅')
+            .addFields(
+                { name: "Equipo 1️⃣", value: equipo1, inline:true},
+                { name: "Equipo 2️⃣", value: equipo2, inline:true},
+            )
+        message.channel.send(embed)
     },
 };
